@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Augenarzt Priv Doz. Dr. Leisser - Ihr Augenarzt in Hietzing</title>
+  <link rel="icon" type="image/svg+xml" href="https://unpkg.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
+              400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
+              800: '#3730a3', 900: '#312e81',
+            },
+          },
+          animation: { 'fade-in': 'fadeIn 0.6s ease-out both' },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(12px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.55);
+      --glass-border: rgba(255, 255, 255, 0.65);
+      --glass-highlight: rgba(255, 255, 255, 0.85);
+      --glass-shadow: rgba(31, 38, 135, 0.12);
+      --glass-blur: 18px;
+      --page-bg-from: #eef2ff;
+      --page-bg-to: #e0e7ff;
+      --text-strong: #1e293b;
+      --text-soft: #475569;
+      --text-muted: #64748b;
+      --accent: #4f46e5;
+      --accent-soft: #6366f1;
+    }
+    .dark {
+      --glass-bg: rgba(30, 41, 59, 0.45);
+      --glass-border: rgba(148, 163, 184, 0.25);
+      --glass-highlight: rgba(255, 255, 255, 0.12);
+      --glass-shadow: rgba(0, 0, 0, 0.45);
+      --glass-blur: 22px;
+      --page-bg-from: #0b1120;
+      --page-bg-to: #1e293b;
+      --text-strong: #f1f5f9;
+      --text-soft: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent: #818cf8;
+      --accent-soft: #a5b4fc;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--page-bg-from) 0%, var(--page-bg-to) 100%);
+      background-attachment: fixed;
+      color: var(--text-strong);
+      transition: background 0.5s ease, color 0.4s ease;
+      min-height: 100vh;
+    }
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px var(--glass-shadow), inset 0 1px 1px 0 var(--glass-highlight);
+      border-radius: 1.25rem;
+    }
+    .glass-strong {
+      background: var(--glass-bg);
+      backdrop-filter: blur(calc(var(--glass-blur) + 6px)) saturate(180%);
+      -webkit-backdrop-filter: blur(calc(var(--glass-blur) + 6px)) saturate(180%);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 12px 40px var(--glass-shadow), inset 0 1px 1px 0 var(--glass-highlight);
+      border-radius: 1.5rem;
+    }
+    .glass-sheen { position: relative; overflow: hidden; }
+    .glass-sheen::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.12) 100%);
+      pointer-events: none; border-radius: inherit;
+    }
+    .dark .glass-sheen::before {
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.04) 100%);
+    }
+    .text-strong { color: var(--text-strong); }
+    .text-soft { color: var(--text-soft); }
+    .text-muted { color: var(--text-muted); }
+    .text-accent { color: var(--accent); }
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .dark .gradient-text {
+      background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 50%, #f9a8d4 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .aurora { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+    .aurora::before, .aurora::after {
+      content: ''; position: absolute; width: 60vw; height: 60vw; border-radius: 50%;
+      filter: blur(80px); opacity: 0.55; animation: drift 18s ease-in-out infinite;
+    }
+    .aurora::before { background: radial-gradient(circle at center, #818cf8, transparent 60%); top: -20%; left: -10%; }
+    .aurora::after { background: radial-gradient(circle at center, #f472b6, transparent 60%); bottom: -25%; right: -10%; animation-delay: -9s; }
+    .dark .aurora::before { opacity: 0.35; background: radial-gradient(circle at center, #4f46e5, transparent 60%); }
+    .dark .aurora::after { opacity: 0.3; background: radial-gradient(circle at center, #7c3aed, transparent 60%); }
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(6%, -4%) scale(1.08); }
+      66% { transform: translate(-5%, 5%) scale(0.95); }
+    }
+    .service-card { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px var(--glass-shadow); }
+    .theme-toggle {
+      position: fixed; top: 0.75rem; right: 0.75rem; z-index: 100;
+      width: 2.5rem; height: 2.5rem; display: flex; align-items: center; justify-content: center;
+      border-radius: 9999px; cursor: pointer; color: var(--text-strong);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
+    }
+    .theme-toggle:hover { transform: scale(1.08) rotate(8deg); }
+    .theme-toggle:active { transform: scale(0.92); }
+    nav, footer, section, .glass, .glass-strong {
+      transition: background 0.5s ease, color 0.4s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-soft); }
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn 0.5s ease-out both; }
+  </style>
+</head>
+<body>
+  <button id="themeToggle" class="theme-toggle glass" aria-label="Modus wechseln" title="Dunkelmodus umschalten">
+    <i data-lucide="moon" style="width:18px;height:18px;" class="text-brand-600"></i>
+  </button>
+
+  <nav class="sticky top-0 z-50 glass-strong rounded-none border-x-0 border-t-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="#" data-page="home" class="nav-link flex items-center gap-2 group">
+          <i data-lucide="eye" class="h-7 w-7 text-accent group-hover:scale-110 transition-transform"></i>
+          <span class="text-lg font-bold text-strong hidden sm:inline">Augenarzt Priv Doz. Dr. Leisser</span>
+          <span class="text-lg font-bold text-strong sm:hidden">Dr. Leisser</span>
+        </a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#" data-page="home" data-scroll="#home" class="nav-link text-soft hover:text-accent font-medium transition-colors">Startseite</a>
+          <a href="#" data-page="home" data-scroll="#services" class="nav-link text-soft hover:text-accent font-medium transition-colors">Leistungen</a>
+          <a href="#" data-page="home" data-scroll="#about" class="nav-link text-soft hover:text-accent font-medium transition-colors">Über mich</a>
+          <a href="#" data-page="home" data-scroll="#contact" class="nav-link text-soft hover:text-accent font-medium transition-colors">Kontakt</a>
+        </div>
+        <button class="md:hidden text-strong p-2" id="mobileMenuBtn" aria-label="Menü">
+          <i data-lucide="menu" style="width:22px;height:22px;"></i>
+        </button>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden pb-4 flex-col gap-3">
+        <a href="#" data-page="home" data-scroll="#home" class="nav-link block text-soft hover:text-accent font-medium transition-colors py-1">Startseite</a>
+        <a href="#" data-page="home" data-scroll="#services" class="nav-link block text-soft hover:text-accent font-medium transition-colors py-1">Leistungen</a>
+        <a href="#" data-page="home" data-scroll="#about" class="nav-link block text-soft hover:text-accent font-medium transition-colors py-1">Über mich</a>
+        <a href="#" data-page="home" data-scroll="#contact" class="nav-link block text-soft hover:text-accent font-medium transition-colors py-1">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-1">
+    <!-- HOME PAGE -->
+    <div id="page-home" class="page active">
+      <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden py-24">
+        <div class="aurora"></div>
+        <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in">
+          <h1 class="text-5xl md:text-7xl font-bold mb-14 leading-tight">
+            <span class="gradient-text">Ihr Augenarzt</span><br />
+            <span class="text-strong">in Hietzing</span>
+          </h1>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#contact" data-page="home" data-scroll="#contact" class="nav-link glass glass-sheen px-8 py-4 rounded-xl font-semibold text-accent hover:scale-105 transition-transform flex items-center justify-center gap-2">
+              <i data-lucide="calendar" style="width:18px;height:18px;"></i>
+              Termin vereinbaren
+            </a>
+            <a href="#services" data-page="home" data-scroll="#services" class="nav-link glass glass-sheen px-8 py-4 rounded-xl font-semibold text-strong hover:scale-105 transition-transform">
+              Meine Leistungen
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-strong mb-4">Meine Leistungen</h2>
+            <p class="text-lg text-soft max-w-3xl mx-auto leading-relaxed">
+              Als Wahlarzt für Augenheilkunde und Optometrie muss ich Ihnen meinen Leistungen in der Ordination in Rechnung stellen. Sie erhalten von mir eine detaillierte Rechnung, die Sie bei Ihrer Krankenkasse einreichen können, um einen Teil der Kosten rückerstattet zu bekommen.<br />
+              Ein e-card Terminal steht mir nicht zur Verfügung.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="service-card glass glass-sheen p-8">
+              <h3 class="text-xl font-bold text-strong mb-4">Augenuntersuchung</h3>
+              <br />
+              <p class="text-2xl font-semibold text-accent">150€</p>
+            </div>
+            <div class="service-card glass glass-sheen p-8">
+              <h3 class="text-xl font-bold text-strong mb-4">Augenuntersuchung sowie OCT</h3>
+              <br />
+              <p class="text-2xl font-semibold text-accent">200€</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="py-20 relative">
+        <div class="aurora opacity-50"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="glass glass-sheen p-8 md:p-10">
+              <h2 class="text-4xl font-bold text-strong mb-6">Priv Doz. Dr. Christoph Leisser</h2>
+              <p class="text-lg text-soft mb-6">
+                Ich bin als Oberarzt an der Augenabteilung im Hanuschkrankenhaus<br />Wien tätig und habe folgende fachliche Schwerpunkte:
+              </p>
+              <ul class="text-lg text-soft mb-6 space-y-1">
+                <li>- Kataraktchirurgie,</li>
+                <li>- Retinologie und</li>
+                <li>- Netzhautchirurgie</li>
+              </ul>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <i data-lucide="award" class="h-6 w-6 text-accent mr-3 flex-shrink-0"></i>
+                  <span class="text-soft">Facharzt für Augenheilkunde und Optometrie</span>
+                </div>
+                <div class="flex items-center">
+                  <i data-lucide="calendar" class="h-6 w-6 text-accent mr-3 flex-shrink-0"></i>
+                  <span class="text-soft">Über 30 Jahre Erfahrung</span>
+                </div>
+                <div class="flex items-center">
+                  <i data-lucide="heart" class="h-6 w-6 text-accent mr-3 flex-shrink-0"></i>
+                  <span class="text-soft">Individuelle Patientenbetreuung</span>
+                </div>
+              </div>
+              <br /><br /><br />
+              <h2 class="text-3xl font-bold text-strong mb-6">Beruflicher Werdegang</h2>
+              <ul class="text-soft mb-6 space-y-2">
+                <li>• Seit 2013&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oberarzt an der Augenabteilung im Hanuschkrankenhaus</li>
+                <li>• 2010 - 2013&nbsp;&nbsp;&nbsp;Oberarzt an der Augenklinik Köln Merheim</li>
+                <li>• 2008 - 2010&nbsp;&nbsp;Oberarzt an der Augenabteilung im LK Wr. Neustadt</li>
+                <li>• 2007 - 2008&nbsp;Oberarzt an der Augenabteilung im Klinikum Wels</li>
+                <li>• 2006 - 2007&nbsp;Oberarzt an der Augenabteilung im LKH Bruck a. d. Mur</li>
+                <li>• 1999 - 2005&nbsp;&nbsp;Facharztausbildung an der Augenabteilung im KH der Barmh. Brüder Wien</li>
+              </ul>
+            </div>
+            <div class="relative">
+              <div class="glass-strong glass-sheen p-8">
+                <img src="https://storage.e.jimdo.com/image/437213598/e177a160-2be1-45c2-998b-8e7eaff97ed5.png" alt="Dr. Leisser" class="rounded-lg w-full h-full object-cover mb-6" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-strong mb-4">Kontakt</h2>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="glass glass-sheen p-8">
+              <h3 class="text-2xl font-bold text-strong mb-6">Meine Praxis</h3>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <i data-lucide="map-pin" class="h-6 w-6 text-accent mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-semibold text-strong">Adresse</p>
+                    <p class="text-soft">Hietzinger Hauptstraße 67/11<br />1130 Wien</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i data-lucide="phone" class="h-6 w-6 text-accent mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-semibold text-strong">Telefon</p>
+                    <a href="tel:00436702054622" class="text-soft hover:text-accent transition-colors">+43 670 2054622</a>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i data-lucide="mail" class="h-6 w-6 text-accent mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-semibold text-strong">E-Mail</p>
+                    <a href="mailto:augenarzt-leisser@gmx.at" class="text-soft hover:text-accent transition-colors">augenarzt-leisser@gmx.at</a>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <i data-lucide="clock" class="h-6 w-6 text-accent mr-3 mt-1 flex-shrink-0"></i>
+                  <div>
+                    <p class="font-semibold text-strong">Öffnungszeiten</p>
+                    <p class="text-soft">Di, Do: 16:00-19:00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="glass glass-sheen p-4 overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3176.080222937467!2d16.281462576742356!3d48.18714954770826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476da7eb8643ffff%3A0x1af0b78b0da42929!2sHietzinger%20Hauptstra%C3%9Fe%2067%2F11%2C%201130%20Wien!5e1!3m2!1sde!2sat!4v1759760323221!5m2!1sde!2sat"
+                width="100%" height="400" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Praxis Standort"></iframe>
+            </div>
+          </div>
+          <div class="glass glass-sheen mt-12 overflow-hidden">
+            <iframe
+              id="JotFormIFrame-261876278063063"
+              title="Terminanfrage"
+              onload="window.parent.scrollTo(0,0)"
+              allowtransparency="true"
+              allow="geolocation; microphone; camera; fullscreen; payment"
+              src="https://form.jotform.com/261876278063063"
+              frameborder="0"
+              style="min-width:100%;max-width:100%;height:539px;border:none;display:block;"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
+    <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-261876278063063']", "https://form.jotform.com/")</script>
+
+    <!-- DATENSCHUTZ PAGE -->
+    <div id="page-datenschutz" class="page">
+      <section class="py-20 relative">
+        <div class="aurora opacity-40"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold text-strong mb-4">Datenschutzerklärung</h1>
+            <br /><br /><br /><br />
+          </div>
+          <div class="glass glass-sheen p-8 md:p-12 max-w-3xl mx-auto">
+            <p class="text-xl text-soft leading-relaxed">
+              Der Schutz Ihrer persönlichen Daten ist mir ein besonderes Anliegen. Ihre Daten werden daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, DSG, TKG 2003) verarbeitet.<br /><br />
+              Beim Besuch dieser Webseite wird Ihre IP-Adresse, Beginn und Ende der Sitzung für die Dauer dieser Sitzung erfasst. Dies ist technisch bedingt, diese Daten werden von mir nicht weiterverarbeitet und vom Provider gelöscht, sobald sie nicht mehr erforderlich sind.
+            </p>
+            <br /><br />
+            <h3 class="text-3xl text-strong mb-4">Ihre Rechte:</h3>
+            <br />
+            <p class="text-xl text-soft">Bezüglich Ihrer bei mir gespeicherten Daten stehen Ihnen grundsätzlich folgende Rechte zu:</p>
+            <br />
+            <ol class="text-xl text-soft space-y-1">
+              <li>• Auskunft,</li>
+              <li>• Berichtigung,</li>
+              <li>• Löschung,</li>
+              <li>• Einschränkung,</li>
+              <li>• Datenübertragbarkeit,</li>
+              <li>• Widerruf und</li>
+              <li>• Widerspruch</li>
+            </ol>
+            <br />
+            <p class="text-xl text-soft">Wenn Sie vermuten, dass Ihre datenschutzrechtlichen Ansprüche verletzt worden sind, können Sie sich an mich oder die Datenschutzbehörde wenden.</p>
+            <br /><br />
+            <h3 class="text-3xl text-strong mb-4">Für den Datenschutz verantwortlich:</h3>
+            <br />
+            <p class="text-xl text-soft leading-relaxed">
+              Priv Doz. Dr. Christoph Leisser<br />
+              Hietzinger Hauptstraße 67/11<br />
+              1130 Wien<br />
+              Tel.: +43 670 205 4622
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- IMPRESSUM PAGE -->
+    <div id="page-impressum" class="page">
+      <section class="py-20 relative">
+        <div class="aurora opacity-40"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold text-strong mb-4">Impressum</h1>
+            <br /><br /><br /><br />
+          </div>
+          <div class="glass glass-sheen p-8 md:p-12 max-w-3xl mx-auto">
+            <p class="text-xl text-soft leading-relaxed">
+              Medieninhaber, Herausgeber und Verleger:<br /><br />
+              Priv Doz. Dr. Christoph Leisser<br />
+              Hietzinger Hauptstraße 67/11<br />
+              1130 Wien<br /><br />
+              Tel.: +43 670 205 4622<br />
+              E-Mail: augenarzt-leisser@gmx.at
+            </p>
+            <br /><br />
+            <p class="text-xl text-soft leading-relaxed">
+              Berufsbezeichnung: Facharzt für Augenheilkunde und Optometrie<br /><br />
+              Verliehen durch: Republik Österreich<br /><br />
+              Mitglied der Wiener Ärztekammer
+            </p>
+            <br /><br />
+            <p class="text-xl text-soft leading-relaxed">Unternehmensgegenstand: Augenärztliche Ordination</p>
+            <br /><br />
+            <p class="text-xl text-soft leading-relaxed">UID-Nummer: ATU74562311</p>
+            <br /><br />
+            <p class="text-xl text-soft leading-relaxed">
+              Haftungsausschluss:<br /><br />
+              Trotz sorgfältiger inhaltlicher Kontrolle übernehme ich keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="glass-strong rounded-none border-x-0 border-b-0 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <i data-lucide="eye" class="h-6 w-6 text-accent"></i>
+            <span class="text-lg font-bold text-strong leading-tight">Priv Doz. Dr.<br />Christoph Leisser<br />- ihr Augenarzt<br />in Hietzing</span>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-strong">Kontakt</h4>
+          <ul class="space-y-2 text-muted">
+            <li>Hietzinger Hauptstraße 67/11</li>
+            <li>1130 Wien</li>
+            <li><a href="tel:06702054622" class="hover:text-accent transition-colors">+43 670 205 4622</a></li>
+            <li><a href="mailto:augenarzt-leisser@gmx.at" class="hover:text-accent transition-colors">augenarzt-leisser@gmx.at</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-strong">Legales</h4>
+          <ul class="space-y-2 text-muted">
+            <li><a href="#" data-page="impressum" class="nav-link hover:text-accent transition-colors">Impressum</a></li>
+            <li><a href="#" data-page="datenschutz" class="nav-link hover:text-accent transition-colors">Datenschutzerklärung</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle - defaults to light
+    (function() {
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark') document.documentElement.classList.add('dark');
+    })();
+
+    const toggleBtn = document.getElementById('themeToggle');
+    const moonIcon = '<i data-lucide="moon" style="width:18px;height:18px;" class="text-brand-600"></i>';
+    const sunIcon = '<i data-lucide="sun" style="width:18px;height:18px;" class="text-amber-300"></i>';
+
+    function updateToggleIcon() {
+      const isDark = document.documentElement.classList.contains('dark');
+      toggleBtn.innerHTML = isDark ? sunIcon : moonIcon;
+      lucide.createIcons();
+    }
+    updateToggleIcon();
+
+    toggleBtn.addEventListener('click', function() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      updateToggleIcon();
+    });
+
+    // Page switching
+    function showPage(pageName, scrollTarget) {
+      document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+      const target = document.getElementById('page-' + pageName);
+      if (target) target.classList.add('active');
+      lucide.createIcons();
+      if (scrollTarget) {
+        setTimeout(function() {
+          const el = document.querySelector(scrollTarget);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 80);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    document.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const page = this.getAttribute('data-page') || 'home';
+        const scroll = this.getAttribute('data-scroll');
+        showPage(page, scroll);
+        // close mobile menu
+        document.getElementById('mobileMenu').classList.add('hidden');
+      });
+    });
+
+    // Mobile menu
+    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
